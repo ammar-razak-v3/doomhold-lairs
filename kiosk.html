@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Special+Elite&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>The Kiosk | Doomhold Lair Rentals</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="bar"><a class="brand" href="index.html">Doom<span>hold</span> Lairs</a>
+            <nav class="site-nav" aria-label="Main">
+                <ul>
+                    <li><a href="index.html">Founder</a></li>
+                    <li><a href="kiosk.html" aria-current="page">Kiosk</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Lair Supply Planner</h1>
+        <p class="lede">Choose your lair, your crew size and your rental length. We calculate every supply your henchmen
+            will need.</p>
+        <div class="kiosk">
+            <form id="plannerForm" novalidate>
+                <fieldset>
+                    <legend>Villain details</legend>
+                    <label for="custName">Villain name</label>
+                    <input type="text" id="custName" name="custName" placeholder="e.g. Baron Von Doom"
+                        autocomplete="name">
+                    <label for="custEmail">Email</label>
+                    <input type="email" id="custEmail" name="custEmail" placeholder="you@evil.com" autocomplete="email">
+                </fieldset>
+                <fieldset>
+                    <legend>Rental plan</legend>
+                    <label for="lairType">Lair type</label>
+                    <select id="lairType" name="lairType">
+                        <option value="">-- Select a lair --</option>
+                        <option value="volcano">Volcano Fortress (5 power cells/day)</option>
+                        <option value="arctic">Arctic Bunker (8 power cells/day)</option>
+                        <option value="orbital">Orbital Station (12 power cells/day)</option>
+                    </select>
+                    <label for="henchmen">Number of henchmen (1 - 100)</label>
+                    <input type="number" id="henchmen" name="henchmen" min="1" max="100" step="1">
+                    <label for="days">Rental days (1 - 30)</label>
+                    <input type="number" id="days" name="days" min="1" max="30" step="1">
+                </fieldset>
+                <fieldset>
+                    <legend>Safety buffer</legend>
+                    <div class="choice"><input type="radio" id="buf0" name="buffer" value="0"><label for="buf0">None
+                            (0%)</label></div>
+                    <div class="choice"><input type="radio" id="buf10" name="buffer" value="10" checked><label
+                            for="buf10">Standard (10%)</label></div>
+                    <div class="choice"><input type="radio" id="buf20" name="buffer" value="20"><label
+                            for="buf20">Paranoid (20%)</label></div>
+                </fieldset>
+                <fieldset>
+                    <legend>Optional extras</legend>
+                    <div class="choice"><input type="checkbox" id="nightShift" name="nightShift"><label
+                            for="nightShift">Night-shift crew (more energy tonic)</label></div>
+                    <div class="choice"><input type="checkbox" id="hazardSuits" name="hazardSuits"><label
+                            for="hazardSuits">Hazard suits (1 per henchman)</label></div>
+                </fieldset>
+                <div class="btns"><button type="submit">Calculate supplies</button><button type="reset"
+                        id="resetBtn">Clear form</button></div>
+            </form>
+            <aside class="panel rules" aria-labelledby="rulesTitle">
+                <h2 id="rulesTitle">How we calculate</h2>
+                <p>Consumables are charged per henchman, per day:</p>
+                <ul>
+                    <li>Ration packs: 3</li>
+                    <li>Water bottles (1 L): 4</li>
+                    <li>Energy tonic cans: 2 (3 with night-shift crew)</li>
+                    <li>Throat lozenges for villain monologues: 1</li>
+                </ul>
+                <p>Lair power cells are a flat rate per day, regardless of crew size: Volcano 5, Arctic 8, Orbital 12.
+                </p>
+                <ul>
+                    <li>Safety buffer (0%, 10% or 20%) is added to consumables only. Results are rounded up.</li>
+                    <li>Hazard suits: 1 per henchman for the whole rental, no buffer.</li>
+                </ul>
+            </aside>
+        </div>
+        <section id="result" aria-live="polite" tabindex="-1"></section>
+    </main>
+    <footer class="site-footer">
+        <p>&copy; 2026 Doomhold Lair Rentals. A fictional business created for ICT600 &ndash; Web Technology &amp;
+            Application.</p>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
